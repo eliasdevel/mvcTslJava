@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controllers.*;
+import db.ConexaoBD;
 
 
 /**
@@ -29,6 +30,22 @@ import controllers.*;
 //            String nomeDaClasse = "br.com.caelum.mvc.logica." + parametro;
             String nomeDaClasse = "controllers."+ parametro;
 
+            
+            try {
+                ConexaoBD conexao = new ConexaoBD();
+                if(conexao.abriuConexao()){
+                    System.out.println("Abriu Normalmente");
+                }else{
+                    System.out.println("erro de conexao");
+                }
+            } catch (Exception e) {
+                
+                   throw new ServletException(
+                        "A lógica de negócios causou uma exceção", e);
+            }
+            
+            
+            
             try {
                 Class<?> classe = Class.forName(nomeDaClasse);
                 Logic logica = (Logic) classe.newInstance();
