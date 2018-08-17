@@ -29,7 +29,7 @@ import javax.management.Query;
  */
 public class ConexaoBD {
 
-    public static Connection con;
+    public  Connection con;
     public ResultSet rs = null;
 
     public boolean abriuConexao() {
@@ -39,19 +39,13 @@ public class ConexaoBD {
         String user = "root";
         String pass = "mysqL/123";
         String driver = "com.mysql.jdbc.Driver";
-
-
-     
         try {
             Class.forName(driver);
             System.out.println("entrou1");
-              Connection conn = DriverManager.getConnection( url, user, pass );
-
+             this.con = DriverManager.getConnection( url, user, pass );
             abriu = true;
             System.out.println("Conexão concluida com sucesso! ");
         } catch (SQLException ex) {
-            
-            
             System.out.println("Erro Sql:"+ex.getErrorCode());
             abriu = false;
         } catch (ClassNotFoundException e) {

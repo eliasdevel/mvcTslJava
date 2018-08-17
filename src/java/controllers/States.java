@@ -1,11 +1,13 @@
 package controllers;
 
+import dao.StatesDao;
 import db.ConexaoBD;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import models.Cusco;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.State;
@@ -20,18 +22,10 @@ public class States implements Logic {
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
-        List<State> states = new ArrayList<State>();
-        
-//        Statement st = ConexaoBD.con.createStatement();
-        
-        
-//        ResultSet rs =  st.executeQuery("Select * from states;");
-        State state = new State();
-        state.setId("RS");
-        state.setName("Rio Grande Do Sul");
-        states.add(state);
+         
+        StatesDao dao = new StatesDao(new ArrayList<State>());
 
-        req.setAttribute("states", states);
+        req.setAttribute("states", dao.getStates());
         System.out.println("Executando a logica e redirecionando...");
         return "list.jsp";
     }

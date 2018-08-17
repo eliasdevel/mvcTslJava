@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/elias/NetBeansProjects/teste/web/index.jsp</file>
-            <file>file:/home/elias/NetBeansProjects/teste/src/java/controllers/Logic.java</file>
-            <file>file:/home/elias/NetBeansProjects/teste/src/java/controllers/PrimeiraLogica.java</file>
-            <file>file:/home/elias/NetBeansProjects/teste/web/primeiraView.jsp</file>
-            <file>file:/home/elias/NetBeansProjects/teste/src/java/main.java</file>
-            <file>file:/home/elias/NetBeansProjects/teste/src/java/models/Cusco.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/list.jsp</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/main.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/Logic.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/db/ConexaoBD.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/States.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>
