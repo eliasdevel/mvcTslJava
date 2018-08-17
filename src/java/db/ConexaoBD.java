@@ -5,7 +5,7 @@
  */
 package db;
 
-import java.sql.DriverManager;
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -35,22 +35,24 @@ public class ConexaoBD {
     public boolean abriuConexao() {
         boolean abriu = false;
 
-        String url = "jdbc:mysql://localhost:3306/iTrago";
+        String url = "jdbc:mysql://localhost:3306/mydb";
         String user = "root";
         String pass = "mysqL/123";
-        String driver = "com.mysql.jdbc.*";
+        String driver = "com.mysql.jdbc.Driver";
 
 
+     
         try {
             Class.forName(driver);
-
-            con = DriverManager.getConnection(url, user, pass);
-
+            System.out.println("entrou1");
+              Connection conn = DriverManager.getConnection( url, user, pass );
 
             abriu = true;
             System.out.println("Conexão concluida com sucesso! ");
         } catch (SQLException ex) {
             
+            
+            System.out.println("Erro Sql:"+ex.getErrorCode());
             abriu = false;
         } catch (ClassNotFoundException e) {
             System.out.println("Erro: Não encontrou a classe: " + e);
