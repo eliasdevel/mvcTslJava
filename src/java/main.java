@@ -29,7 +29,6 @@ import db.ConexaoBD;
             String parametro = request.getParameter("p");
 //            String nomeDaClasse = "br.com.caelum.mvc.logica." + parametro;
             String nomeDaClasse = "controllers."+ parametro;
-
             
             try {
                 ConexaoBD conexao = new ConexaoBD();

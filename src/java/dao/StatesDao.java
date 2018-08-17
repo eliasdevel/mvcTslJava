@@ -22,15 +22,22 @@ public class StatesDao extends Standart {
         this.con = con;
         this.states = states;
     }
-
+    /**
+     * 
+     * @return List of states
+     * @throws SQLException 
+     */
     public List<State> getStates() throws SQLException {
         Statement st = this.con.createStatement();
         ResultSet rs = st.executeQuery("Select * from states;");
         while (rs.next()) {
             State state = new State();
+            //Setters
             state.setId(rs.getString("id"));
             state.setName(rs.getString("name"));
             this.states.add(state);
+            
+            //turn null, "minha mania"
             state = null;
         }
         return this.states;

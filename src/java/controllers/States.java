@@ -26,7 +26,9 @@ public class States implements Logic {
         StatesDao dao = new StatesDao(new ArrayList<State>());
 
         req.setAttribute("states", dao.getStates());
+        req.setAttribute("content", "states-list.jsp");
+        req.setAttribute("title", "Estados");
         System.out.println("Executando a logica e redirecionando...");
-        return "list.jsp";
+        return "layout.jsp";
     }
 }
