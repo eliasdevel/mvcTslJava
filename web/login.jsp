@@ -15,18 +15,20 @@
     </head>
     <body>
         <div  class="login col-lg-8">
+            <div><c:out value = "${error}"/></div>
             <form  action="<c:out value = "admin?p=Login"/>" method="POST"  >
                 <div class="form-group">
-                    <label for="inputEmail">Nome</label>
-                    <input name ="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome do estado">
+                    <label for="inputEmail">E-mail</label>
+                    <input name ="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Email">
 
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Senha</label>
-                    <input name ="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Sigla">
+                    <input name ="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn btn-primary">Logar</button>
             </form>
         </div>
     </body>
+    

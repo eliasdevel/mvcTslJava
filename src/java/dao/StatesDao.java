@@ -2,6 +2,7 @@
  */
 package dao;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import models.State;
 import java.sql.ResultSet;
@@ -27,7 +28,6 @@ public class StatesDao extends Standart {
      * @throws SQLException
      */
     public List<State> getStates() throws SQLException {
-      
 
         Statement st = this.con.createStatement();
         ResultSet rs = st.executeQuery("Select * from states;");
@@ -42,5 +42,12 @@ public class StatesDao extends Standart {
             state = null;
         }
         return this.states;
+    }
+
+    public boolean saveState(State state) throws SQLException {
+        PreparedStatement ps = this.con.prepareStatement("insert into states values(?,?);");
+        ps.setString(1, state.getId());
+        ps.setString(2, state.getName());
+        return ps.execute();
     }
 }

@@ -16,14 +16,13 @@ public class States implements Logic {
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
-
         StatesDao dao = new StatesDao(new ArrayList<State>());
-
         req.setAttribute("states", dao.getStates());
         req.setAttribute("content", "states-list.jsp");
+        req.setAttribute("savePage", "StateForm");
         req.setAttribute("title", "Estados");
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }
-
+  
 }

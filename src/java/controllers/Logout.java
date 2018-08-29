@@ -8,15 +8,16 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class Login implements Logic {
+public class Logout implements Logic {
 
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
         System.out.println(req.getParameter("ac"));
 
-        req.getSession().setAttribute("email", req.getParameter("email"));
-        req.getSession().setAttribute("password", req.getParameter("password"));
+        req.getSession().removeAttribute("email");
+        req.getSession().removeAttribute("password");
+        
 
 //        StatesDao dao = new StatesDao(new ArrayList<State>());
 //
@@ -24,16 +25,8 @@ public class Login implements Logic {
 //        req.setAttribute("content", "states-list.jsp");
         req.setAttribute("title", "Login");
         System.out.println("Executando a logica e redirecionando...");
-        if (req.getParameter("email") != null) {
-            return "reload.jsp";
-        }
-        if (req.getParameter("tried") != null) {
-            if (req.getParameter("tried").equals("t")) {
-                req.setAttribute("error", "E-mail ou senha incorretos");
-            }
-        }
-
         return "login.jsp";
     }
 
+   
 }

@@ -35,7 +35,7 @@ public class ConexaoBD {
     public boolean abriuConexao() {
         boolean abriu = false;
 
-        String url = "jdbc:postgresql://localhost:5432/itrago";
+        String url = "jdbc:postgresql://localhost:5432/itrago?useUnicode=yes&characterEncoding=UTF-8";
         String user = "postgres";
         String pass = "postgres";
         String driver = "org.postgresql.Driver";
