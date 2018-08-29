@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controllers.*;
+import dao.LoginDao;
 import db.ConexaoBD;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -28,11 +32,19 @@ public class main extends HttpServlet {
         HttpSession session = request.getSession();
 
         String parametro = request.getParameter("p");
-        String usuario = (String) session.getAttribute("name");
-        String senha = (String) session.getAttribute("password");
 
-        if (usuario == null || senha == null) {
+        String usuario = (String) session.getAttribute("email");
+        String senha = (String) session.getAttribute("password");
+        boolean logged = false;
+        try {
+            logged = new LoginDao(session).logged();
+        } catch (SQLException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if ((usuario == null || senha == null) || !logged) {
             parametro = "Login";
+        } else if (parametro.equals("Login")) {
+            parametro = "Home";
         }
 
 //            String nomeDaClasse = "br.com.caelum.mvc.logica." + parametro;

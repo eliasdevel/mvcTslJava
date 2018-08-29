@@ -25,7 +25,7 @@ public class Login implements Logic {
             throws Exception {
         System.out.println(req.getParameter("ac"));
 
-        req.getSession().setAttribute("name", req.getParameter("name"));
+        req.getSession().setAttribute("email", req.getParameter("email"));
         req.getSession().setAttribute("password", req.getParameter("password"));
         
 

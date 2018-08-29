@@ -17,8 +17,8 @@
         <div  class="login col-lg-8">
             <form  action="<c:out value = "admin?p=Login"/>" method="POST"  >
                 <div class="form-group">
-                    <label for="inputName">Nome</label>
-                    <input name ="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome do estado">
+                    <label for="inputEmail">Nome</label>
+                    <input name ="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome do estado">
 
                 </div>
                 <div class="form-group">
