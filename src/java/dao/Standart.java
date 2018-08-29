@@ -30,9 +30,16 @@ public class Standart {
                     System.out.println("erro de conexao");
                 }
             } catch (Exception e) {
+                System.out.println("erro de conexao");
+            }
+          
+             try {
+              
+               this.con = conexao.obterConexao();
+            } catch (Exception e) {
                 
             }
-          this.con = conexao.obterConexao();
+         
     }
 
     

@@ -35,10 +35,10 @@ public class ConexaoBD {
     public boolean abriuConexao() {
         boolean abriu = false;
 
-        String url = "jdbc:mysql://localhost:3306/mydb";
-        String user = "root";
-        String pass = "mysqL/123";
-        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:postgresql://localhost:5432/itrago";
+        String user = "postgres";
+        String pass = "postgres";
+        String driver = "org.postgresql.Driver";
         try {
             Class.forName(driver);
             System.out.println("entrou1");

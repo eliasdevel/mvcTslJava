@@ -22,6 +22,7 @@ public class StateSave implements Logic {
         State state = new State();
         if(req.getParameter("id") != null) state.setId(req.getParameter("id"));
         if(req.getParameter("name") != null) state.setId(req.getParameter("id"));
+         
         
         req.setAttribute("states", dao.getStates());
         req.setAttribute("content", "sucess.jsp");
