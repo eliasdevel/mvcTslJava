@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.StatesDao;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,20 +19,25 @@ public class StateForm implements Logic {
             throws Exception {
         System.out.println(req.getParameter("ac"));
         java.lang.reflect.Method method;
-        
 
         StatesDao dao = new StatesDao(new ArrayList<State>());
-
-        req.setAttribute("states", dao.getStates());
+        String action = "admin?p=StateSave";
+        req.setAttribute("states", dao.getStates(null));
         req.setAttribute("content", "state-form.jsp");
         req.setAttribute("title", "Estados");
-        req.setAttribute("action", "admin?p=StateSave");
+        if (req.getParameter("id") != null) {
+            ResultSet rs = dao.getById("states", req.getParameter("id"));
+            rs.next();
+            State state = new State();
+            action += "&id=" + req.getParameter("id");
+            state.setId(req.getParameter("id"));
+            state.setName(rs.getString("name"));
+            req.setAttribute("state", state);
+        }
+
+        req.setAttribute("action", action);
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }
-    
-    
-    
 
-  
 }

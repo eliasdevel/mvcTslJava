@@ -17,7 +17,7 @@ public class States implements Logic {
             HttpServletResponse res)
             throws Exception {
         StatesDao dao = new StatesDao(new ArrayList<State>());
-        req.setAttribute("states", dao.getStates());
+        req.setAttribute("states", dao.getStates(null));
         req.setAttribute("content", "states-list.jsp");
         req.setAttribute("savePage", "StateForm");
         req.setAttribute("title", "Estados");

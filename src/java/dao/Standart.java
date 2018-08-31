@@ -8,6 +8,7 @@ package dao;
 import db.ConexaoBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 
@@ -46,6 +47,10 @@ public class Standart {
     
     public void setTable(String table) {
         this.table = table;
+    }
+    
+    public ResultSet getById(String table,String id) throws SQLException {
+        return this.con.createStatement().executeQuery("Select * from "+ table + " Where id ='"+id+"'");
     }
     
     
