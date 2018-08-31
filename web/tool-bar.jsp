@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
-<div class="row">
+<div style="margin-left: 0px" class="row">
     <div class="col-md-12">
-        <a class="glyphicon-plus" href="?p=<c:out value = "${savePage}"/>"></a>
+        <a class="glyphicon-plus" style="font-size: 20px" href="?p=<c:out value = "${savePage}"/>"></a>
         <div class="input-group" id="adv-search" style="float:right;margin-left:100px;">
             <input type="text" class="form-control" placeholder="Search for snippets" />
             <div class="input-group-btn">
