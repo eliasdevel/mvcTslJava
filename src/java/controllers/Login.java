@@ -25,6 +25,7 @@ public class Login implements Logic {
         req.setAttribute("title", "Login");
         System.out.println("Executando a logica e redirecionando...");
         if (req.getParameter("email") != null) {
+            req.setAttribute("url", "admin?p=Login&tried=t");
             return "reload.jsp";
         }
         if (req.getParameter("tried") != null) {
