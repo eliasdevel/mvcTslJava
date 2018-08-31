@@ -16,16 +16,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                     <ul class="dropdown-menu forAnimate" role="menu">
                         <li><a href="?p=States">Estados</a></li>
-                        <li><a href="#">Modificar</a></li>
-                        <li><a href="#">Reportar</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Informes</a></li>
+                        <!--<li class="divider"></li>-->
                     </ul>
                 </li>
-                <li ><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-                <li ><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
             </ul>
         </div>
     </div>

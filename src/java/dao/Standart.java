@@ -7,6 +7,7 @@ package dao;
 
 import db.ConexaoBD;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,5 +54,10 @@ public class Standart {
         return this.con.createStatement().executeQuery("Select * from "+ table + " Where id ='"+id+"'");
     }
     
+     public boolean delete(String table, String id) throws SQLException {
+        PreparedStatement ps = this.con.prepareStatement("DELETE FROM "+table+ " where id = ?;");
+        ps.setString(1, id );
+        return ps.execute();
+    }
     
 }
