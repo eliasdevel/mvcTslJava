@@ -8,18 +8,22 @@ import models.State;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import models.Address;
+import models.City;
 
 /**
  *
  * @author elias
  */
-public class StatesDao extends Standart {
+public class AddressDao extends Standart {
 
-    private List<State> states;
+    private List<Address> addresses;
+    private CitysDao citysDao;
 
-    public StatesDao(List<State> states) {
+    public AddressDao(List<Address> addresses) {
         this.con = con;
-        this.states = states;
+        this.addresses = addresses;
     }
 
     /**
@@ -27,29 +31,32 @@ public class StatesDao extends Standart {
      * @return List of states
      * @throws SQLException
      */
-    public List<State> getStates(State stateQ) throws SQLException {
-        String query = "SELECT * FROM states ";
+    public List<Address> getAddresses(Address stateQ) throws SQLException {
+        this.citysDao = new CitysDao(new ArrayList<City>());
+        
+        
+        String query = "SELECT * FROM addresses";
         if (stateQ != null) {
-            query += "name ilike %'?'%";
+            query += "street ilike %'?'%";
         }
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
 
-        if (stateQ != null) {
-            ps.setString(1, stateQ.getName());
-        }
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            State state = new State();
+            Address address = new Address();
             //Setters
-            state.setId(rs.getString("id"));
-            state.setName(rs.getString("name"));
-            this.states.add(state);
+            address.setId(rs.getInt("id"));
+            address.setCep(rs.getString("cep"));
+            address.setHint(rs.getString("hint"));
+            address.setStreet(rs.getString("street"));
+            address.setCity(this.citysDao.getCity(rs.getInt("cityid")));
+            this.addresses.add(address);
 
             //turn null, "minha mania"
-            state = null;
+            address = null;
         }
-        return this.states;
+        return this.addresses;
     }
 
     public boolean saveState(State state) throws SQLException {
@@ -75,13 +82,17 @@ public class StatesDao extends Standart {
         return ps.execute();
     }
     
-     public State getState(String id) throws SQLException {
-        ResultSet rs = this.getById("states", id );
+     public Address getAddress(int id) throws SQLException {
+        ResultSet rs = this.getById("addresses", id+"" );
         rs.next();
-        State c = new State();
-        c.setId(rs.getString("id"));
-        c.setName(rs.getString("name"));
-        return c;
+        Address a = new Address();
+        a.setId(rs.getInt("id"));
+        a.setCep(rs.getString("cep"));
+        a.setHint(rs.getString("hint"));
+        a.setStreet(rs.getString("street"));
+        this.citysDao = new CitysDao(new ArrayList<City>());
+        a.setCity(this.citysDao.getCity(rs.getInt("city_id")));
+        return a;
     }
 
 }

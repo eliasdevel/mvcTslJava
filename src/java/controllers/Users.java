@@ -20,7 +20,7 @@ public class Users implements Logic {
         UsersDao dao = new UsersDao(new ArrayList<User>());
         req.setAttribute("users", dao.getUsers(null));
         req.setAttribute("content", "users-list.jsp");
-        req.setAttribute("savePage", "StateForm");
+        req.setAttribute("savePage", "UserForm");
         req.setAttribute("title", "Users");
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";

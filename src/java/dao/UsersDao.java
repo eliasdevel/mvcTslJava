@@ -8,6 +8,8 @@ import models.State;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import models.Address;
 import models.User;
 
 /**
@@ -17,6 +19,7 @@ import models.User;
 public class UsersDao extends Standart {
 
     private List<User> users;
+    private AddressDao addressDao;
 
     public UsersDao(List<User> users) {
         this.con = con;
@@ -57,11 +60,11 @@ public class UsersDao extends Standart {
 
     public boolean saveUser(User user) throws SQLException {
         PreparedStatement ps = null;
-        ResultSet rs = this.getById("users", user.getId()+"");
+        ResultSet rs = this.getById("users", user.getId() + "");
         if (rs.next()) {
             ps = this.con.prepareStatement("UPDATE users  name  = ? where id = ?;");
             ps.setString(1, user.getName());
-            ps.setInt(2,  user.getId());
+            ps.setInt(2, user.getId());
         } else {
             ps = this.con.prepareStatement("insert into users values(?,?);");
             ps.setInt(1, user.getId());
@@ -71,6 +74,15 @@ public class UsersDao extends Standart {
         return ps.execute();
     }
 
-   
+    public User getUser(int id) throws SQLException {
+        User u = new User();
+        ResultSet rs = this.getById("users", id + "");
+        rs.next();
+        u.setCpf(rs.getString("cpf"));
+        this.addressDao = new AddressDao(new ArrayList<Address>());
+        u.setAddress(this.addressDao.getAddress(rs.getInt("address_id")));
+        u.setName(rs.getString("name"));
+        return u;
+    }
 
 }

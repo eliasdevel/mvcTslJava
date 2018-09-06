@@ -1,5 +1,7 @@
 package controllers;
 
+import dao.CitysDao;
+import dao.StatesDao;
 import dao.UsersDao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -7,6 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.City;
+import models.State;
 import models.User;
 
 /*
@@ -20,9 +24,14 @@ public class UserForm implements Logic {
             HttpServletResponse res)
             throws Exception {
         System.out.println(req.getParameter("ac"));
-        java.lang.reflect.Method method;
 
+        
+        
         UsersDao dao = new UsersDao(new ArrayList<User>());
+  
+        CitysDao citysDao = new CitysDao(new ArrayList<City>());
+        StatesDao statesDao = new StatesDao(new ArrayList<State>());
+        
         String action = "admin?p=UserSave";
         req.setAttribute("users", dao.getUsers(null));
         req.setAttribute("content", "user-form.jsp");
@@ -30,21 +39,19 @@ public class UserForm implements Logic {
         if (req.getParameter("id") != null) {
             ResultSet rs = dao.getById("users", req.getParameter("id"));
             rs.next();
-            User user = new User();
+            User user = dao.getUser(Integer.parseInt(req.getParameter("id")));
             action += "&id=" + req.getParameter("id");
-            user.setId(Integer.parseInt(req.getParameter("id")));
-            user.setName(rs.getString("name"));
-            user.setEmail(rs.getString("email"));
-            user.setCpf(rs.getString("cpf"));
-            user.setType(rs.getString("type"));
             req.setAttribute("user", user);
         }
+        
         Map<String, String> tipos = new HashMap<>();
 
         tipos.put("R", "Administrador");
         tipos.put("N", "Cliente");
         req.setAttribute("tipos", tipos);
         req.setAttribute("action", action);
+        req.setAttribute("states", statesDao.getStates(null));
+        req.setAttribute("citys", citysDao.getCitys(null));
 
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";

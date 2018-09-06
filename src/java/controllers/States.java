@@ -16,6 +16,8 @@ public class States implements Logic {
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
+        
+        
         StatesDao dao = new StatesDao(new ArrayList<State>());
         req.setAttribute("states", dao.getStates(null));
         req.setAttribute("content", "states-list.jsp");

@@ -23,7 +23,6 @@ public class Address extends Standart{
     public void setCity(City city) {
         this.city = city;
     }
-
    
 
     public String getStreet() {
