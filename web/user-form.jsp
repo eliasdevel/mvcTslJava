@@ -67,5 +67,8 @@
     </div>
 
 
+    <c:if test="${user != null}">
+        <input type="hidden" name="address_id" value="<c:out value="${user.getAddress().getId()}" />">
+    </c:if>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
