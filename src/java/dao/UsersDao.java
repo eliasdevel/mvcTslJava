@@ -80,6 +80,7 @@ public class UsersDao extends Standart {
         rs.next();
         u.setCpf(rs.getString("cpf"));
         u.setType(rs.getString("type"));
+        u.setEmail(rs.getString("email"));
         this.addressDao = new AddressDao(new ArrayList<Address>());
         u.setAddress(this.addressDao.getAddress(rs.getInt("address_id")));
         u.setName(rs.getString("name"));
