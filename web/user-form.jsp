@@ -35,11 +35,13 @@
                 <option value="${user.getAddress().getCity().getState().getId()}" selected>${user.getAddress().getCity().getState().getName()}</option>
             </c:if>
             <c:forEach items="${states}" var="state">
-                <option value="${state.getId()}">${state.getName()}</option>
+                <c:if test="${user.getAddress().getCity().getState().getId() != state.getId()}">
+                    <option value="${state.getId()}">${state.getName()}</option>
+                </c:if>
             </c:forEach>
         </select>
     </div>
-    
+
     <div class="form-group">
         <label for="exampleFormControlSelect1">Cidade</label>
         <select class="form-control" id="exampleFormControlSelect1" name="city"  >
@@ -47,21 +49,23 @@
                 <option value="${user.getAddress().getCity().getId()}" selected>${user.getAddress().getCity().getName()}</option>
             </c:if>
             <c:forEach items="${citys}" var="city">
-                <option value="${city.getId()}">${city.getName()}</option>
+                <c:if test="${user.getAddress().getCity().getId() != city.getId()}">
+                    <option value="${city.getId()}">${city.getName()}</option>
+                </c:if>
             </c:forEach>
         </select>
     </div>
-    
+
     <div class="form-group">
         <label for="inputSigla">Rua</label>
         <input name ="street" value="<c:out value="${user.getAddress().getStreet()}"/>" type="text" class="form-control" id="exampleInputPassword1" placeholder="Rua">
     </div>
-    
-     <div class="form-group">
+
+    <div class="form-group">
         <label for="inputSigla">Cep</label>
         <input name ="cep" value="<c:out value="${user.getAddress().getCep()}"/>" type="text" class="form-control" id="exampleInputPassword1" placeholder="Cep">
     </div>
-    
+
 
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

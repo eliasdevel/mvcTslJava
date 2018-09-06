@@ -79,6 +79,7 @@ public class UsersDao extends Standart {
         ResultSet rs = this.getById("users", id + "");
         rs.next();
         u.setCpf(rs.getString("cpf"));
+        u.setType(rs.getString("type"));
         this.addressDao = new AddressDao(new ArrayList<Address>());
         u.setAddress(this.addressDao.getAddress(rs.getInt("address_id")));
         u.setName(rs.getString("name"));
