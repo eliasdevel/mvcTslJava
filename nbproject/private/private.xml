@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/layout.jsp</file>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/assets/menu.css</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/dao/CitysDao.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/dao/StatesDao.java</file>
             <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/user-form.jsp</file>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/Users.java</file>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/StateForm.java</file>
             <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/dao/UsersDao.java</file>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/web/tool-bar.jsp</file>
-            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/models/User.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/dao/Standart.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/dao/AddressDao.java</file>
+            <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/UserSave.java</file>
             <file>file:/home/elias/NetBeansProjects/mvcTslJava/src/java/controllers/UserForm.java</file>
         </group>
     </open-files>
