@@ -11,6 +11,8 @@ package models;
  */
 public class Address extends Standart{
   
+
+ 
     private String street;
     private String cep;
     private String hint;

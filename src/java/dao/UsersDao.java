@@ -62,14 +62,19 @@ public class UsersDao extends Standart {
         PreparedStatement ps = null;
         ResultSet rs = this.getById("users", user.getId() + "");
         if (rs.next()) {
-            ps = this.con.prepareStatement("UPDATE users  name  = ? where id = ?;");
+            ps = this.con.prepareStatement("UPDATE users set name  = ? , email = ?, cpf = ? , type= ? where id = ?;");
             ps.setString(1, user.getName());
-            ps.setInt(2, user.getId());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getCpf());
+            ps.setString(4, user.getType());
+            ps.setInt(5, user.getId());
         } else {
-            ps = this.con.prepareStatement("insert into users values(?,?);");
-            ps.setInt(1, user.getId());
-            ps.setString(2, user.getName());
-
+            ps = this.con.prepareStatement("insert into users (name,email,cpf,type,address_id) values(?,?,?,?,?);");
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getCpf());
+            ps.setString(4, user.getType());
+            ps.setInt(5, user.getAddress().getId());
         }
         return ps.execute();
     }

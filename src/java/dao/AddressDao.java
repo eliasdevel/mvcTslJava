@@ -59,26 +59,32 @@ public class AddressDao extends Standart {
         return this.addresses;
     }
 
-    public boolean saveState(State state) throws SQLException {
+    public boolean saveAddress(Address address) throws SQLException {
         PreparedStatement ps = null;
-        ResultSet rs = this.getById("states", state.getId());
+        ResultSet rs = this.getById("addresses", address.getId()+"");
         if (rs.next()) {
-            ps = this.con.prepareStatement("UPDATE states set id = ? , name  = ? where id = ?;");
-            ps.setString(1, state.getId());
-            ps.setString(2, state.getName());
-            ps.setString(3, state.getId());
+            ps = this.con.prepareStatement("UPDATE addresses  set cep = ? , hint = ?,street = ?, city_id = ? where id = ?;");
+            ps.setString(1, address.getCep());
+            ps.setString(2, address.getHint());
+            ps.setString(3, address.getStreet());
+            ps.setInt(4,  address.getCity().getId());
+            ps.setInt(5,  address.getId());
         } else {
-            ps = this.con.prepareStatement("insert into states values(?,?);");
-            ps.setString(1, state.getId());
-            ps.setString(2, state.getName());
-
+            ps = this.con.prepareStatement("insert into addresses (cep,hint,street,city_id)values(?,?,?,?);");
+            ps.setString(1, address.getCep());
+            ps.setString(2, address.getHint());
+            ps.setString(3, address.getStreet());
+            ps.setInt(4, address.getCity().getId());
+            rs =  this.con.createStatement().executeQuery("SELECT nextval('addresses_id_sequence');");
+            rs.next();
+            address.setId(rs.getInt(1)+1);
         }
         return ps.execute();
     }
 
-    public boolean delete(State state) throws SQLException {
-        PreparedStatement ps = this.con.prepareStatement("DELETE FROM states where id = ?;");
-        ps.setString(1, state.getId());
+    public boolean delete(Address addr) throws SQLException {
+        PreparedStatement ps = this.con.prepareStatement("DELETE FROM addresses where id = ?;");
+        ps.setInt(1, addr.getId());
         return ps.execute();
     }
     

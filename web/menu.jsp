@@ -16,6 +16,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                     <ul class="dropdown-menu forAnimate" role="menu">
                         <li><a href="?p=States">Estados</a></li>
+                        <li><a href="?p=Users">Usuarios</a></li>
                         <!--<li class="divider"></li>-->
                     </ul>
                 </li>
